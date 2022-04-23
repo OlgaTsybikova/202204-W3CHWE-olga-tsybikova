@@ -1,5 +1,5 @@
-import AppComponent from "./Components/AppComponent/AppComponent.js";
+import AppComponent from "./components/AppComponent/AppComponent.js";
 
 const body = document.querySelector("body");
 
-AppComponent(body);
+new AppComponent(body);
