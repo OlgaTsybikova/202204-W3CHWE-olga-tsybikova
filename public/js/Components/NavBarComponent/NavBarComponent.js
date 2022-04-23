@@ -14,7 +14,7 @@ class NavBarComponent extends Component {
     <header class="main-header">
         <h1 class="main-title">Pokemon Fever Starts Here!</h1>
       </header>
-      <nav class="navBar"></nav>
+      <nav class="navBar">takataka</nav>
       <section class="controls">                
       </section>`;
   }

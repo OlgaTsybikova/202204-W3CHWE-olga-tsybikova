@@ -6,14 +6,13 @@ class AppComponent extends Component {
   constructor(parentElement, pokemons) {
     super(parentElement, "div", "container");
     this.pokemons = pokemons;
-
     this.render();
   }
 
   render() {
     this.element.innerHTML = `
     <header class="main-header">
-        <h1 class="main-title">Señores que te apuntan con el dedo</h1>
+        <h1 class="main-title">My Pokemons</h1>
       </header>
       <section class="controls">                
       </section>
