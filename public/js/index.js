@@ -1,1 +1,5 @@
-console.log(fetch("https://pokeapi.co/api/v2/pokemon-species/aegislash"));
+import AppComponent from "./Components/AppComponent/AppComponent.js";
+
+const body = document.querySelector("body");
+
+AppComponent(body);
