@@ -1,5 +1,28 @@
-import AppComponent from "./Components/AppComponent/AppComponent.js";
+import AppComponent from "./components/AppComponent/AppComponent.js";
 
 const body = document.querySelector("body");
 
-AppComponent(body);
+new AppComponent(body);
+
+const getPokemonData = async () => {
+  try {
+    const response = await fetch(
+      "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
+    );
+    if (response.status === 200) {
+      const pokemonData = await response.json();
+      let pokemons = "";
+      pokemonData.results.forEach((pokemon) => {
+        pokemons += `<h1>${pokemon.name}</h1>`;
+      });
+      document.querySelector(".container").innerHTML = pokemons;
+    }
+    if (response.status === 401) {
+      return "not found";
+    }
+    return response;
+  } catch (error) {
+    return "error";
+  }
+};
+getPokemonData();
