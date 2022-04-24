@@ -11,11 +11,10 @@ const getPokemonData = async () => {
     let pokemons = "";
     pokemonInfo.results.forEach((pokemon) => {
       pokemons += `
-					<div class="pokemon">
-						<img class="poster" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/12.png" alt="${pokemon.name} image"/>
-						<h3 class="titulo">${pokemon.name}</h3>
-					</div>
-				`;
+      <div class="pokemon">
+        <img class="poster" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/12.png" alt="${pokemon.name} image"/>
+        <h3 class="titulo">${pokemon.name}</h3>
+      </div>`;
     });
 
     document.querySelector(".container").innerHTML = pokemons;
