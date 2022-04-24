@@ -1,38 +1,84 @@
-import Component from "../Component.js";
-import NavBarComponent from "../NavBarComponent/NavBarComponent.js";
-import SingleCardComponent from "../SingleCardComponent/SingleCardComponent.js";
+/* eslint-disable no-undef */
 
 class AppComponent extends Component {
-  pokemons;
-  constructor(parentElement, pokemons) {
-    super(parentElement, "div", "container");
-    this.pokemons = pokemons;
-    this.render();
+  pokemonServices;
+  url;
+  page = 0;
+  pagedURL;
+
+  constructor(parentElement, pokemonServices, url) {
+    super(parentElement, "app-container");
+
+    this.pokemonServices = pokemonServices;
+    this.url = url;
+    this.pagedURL = url;
+    this.getPageURL();
+    this.generateHTML(this.pagedURL);
   }
 
-  render() {
-    this.element.innerHTML = `
-    <header class="main-header">
-        <h1 class="main-title">My Pokemons</h1>
-      </header>  
-        <div class="container">
-        <div class="pokemons"> 
-        </div>                    
-        </div>
-      </main>
-    `;
-    const navBarHeader = this.element.querySelector(".main-header");
-    new NavBarComponent(navBarHeader, "Menu");
+  getPageURL = () => {
+    const offset = this.page * 9;
+    const urlPage = `?offset=${offset}&limit=9`;
+    const pagedURL = this.url + urlPage;
+    this.pagedURL = pagedURL;
+  };
 
-    const pokemonCard = this.element.querySelector(".container");
-    new SingleCardComponent(
-      pokemonCard,
-      "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0",
-      "name",
-      "abilities",
-      "",
-      "id"
+  previousPage = () => {
+    if (this.page > 0) {
+      this.page--;
+      this.getPageURL();
+      this.generateHTML(this.pagedURL);
+    }
+  };
+
+  nextPage = () => {
+    this.page++;
+    this.getPageURL();
+    this.generateHTML(this.pagedURL);
+  };
+
+  generateHTML(url) {
+    const html = `     
+      <main class="main">
+        
+        <section class="pokemon-container">
+          <ul class="pokemon-list">
+          </ul>
+        </section>
+        <div class="pagination">
+          
+        </div>
+      </main>`;
+
+    this.element.innerHTML = html;
+
+    const pokeListContainer = document.querySelector(".pokemon-list");
+
+    (async () => {
+      const getPokeService = await this.pokemonServices.getPokemons(url);
+      const getPokeList = getPokeService.results;
+      getPokeList.forEach((pokemon) => {
+        new PokeCard(pokeListContainer, pokemon, false);
+      });
+    })();
+
+    const paginationContainer = document.querySelector(".pagination");
+    new Button(
+      paginationContainer,
+      "pagination__previous",
+      "<",
+      this.previousPage
     );
+
+    new Button(paginationContainer, "pagination__next", ">", this.nextPage);
+
+    if (this.page === 0) {
+      const previousPageButton = document.querySelector(
+        ".pagination__previous"
+      );
+      previousPageButton.classList.add("button--disabled");
+    }
   }
 }
+
 export default AppComponent;
