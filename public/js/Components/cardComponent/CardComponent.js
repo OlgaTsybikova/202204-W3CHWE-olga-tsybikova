@@ -32,19 +32,19 @@ class CardComponent extends Component {
   render() {
     this.element.innerHTML = `
     <div class="pokemon">
-    <img src="${this.pokeImg}" alt="${
+      <img src="${this.pokeImg}" alt="${
       this.pokeName
     }" class="pokemon-detail__img"/>
-    <h3 class="titulo">${this.pokeName}</h3>
-    <ul class="pokemon-detail__types">
-    ${
-      this.pokeType.length < 2
-        ? `<li class="pokemon-card__type">${this.pokeType[0]}</li>`
-        : `<li class="pokemon-card__type">${this.pokeType[0]}</li>
-    <li class="pokemon-card__type">${this.pokeType[1]}</li>`
-    }
-    </ul>
-		 </div>`;
+      <h3 class="titulo">${this.pokeName}</h3>
+      <ul class="pokemon-detail__types">
+      ${
+        this.pokeType.length < 2
+          ? `<li class="pokemon-card__type">${this.pokeType[0]}</li>`
+          : `<li class="pokemon-card__type">${this.pokeType[0]}</li>
+      <li class="pokemon-card__type">${this.pokeType[1]}</li>`
+      }
+      </ul>
+    </div>`;
   }
 }
 export default CardComponent;
