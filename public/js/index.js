@@ -9,7 +9,6 @@ const getPokemonData = async () => {
     const response = await fetch(
       "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
     );
-    console.log(response);
 
     if (response.status === 200) {
       const pokemonData = await response.json();
@@ -24,10 +23,11 @@ const getPokemonData = async () => {
       document.querySelector(".container").innerHTML = pokemons;
     }
     if (response.status === 401) {
-      console.log("not found");
+      return "not found";
     }
+    return response;
   } catch (error) {
-    console.log("error");
+    return "error";
   }
 };
 getPokemonData();
