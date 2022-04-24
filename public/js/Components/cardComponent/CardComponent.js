@@ -44,7 +44,7 @@ class CardComponent extends Component {
     <li class="pokemon-card__type">${this.pokeType[1]}</li>`
     }
     </ul>
-		</div>`;
+		 </div>`;
   }
 }
 export default CardComponent;
