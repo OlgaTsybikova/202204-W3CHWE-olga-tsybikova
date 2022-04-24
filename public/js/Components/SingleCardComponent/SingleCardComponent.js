@@ -1,15 +1,17 @@
 import Component from "../Component.js";
 
 class SingleCardComponent extends Component {
-  pokeApi;
+  pokemon;
   name;
   abilities;
   forms;
+  id;
 
-  constructor(parentElement, pokeApi, name, abilities, forms) {
+  constructor(parentElement, pokemon, name, abilities, forms, id) {
     super(parentElement, "li", "pokemon");
-    this.pokeApi = pokeApi;
+    this.pokemon = pokemon;
     this.name = name;
+    this.id = id;
     this.abilities = abilities;
     this.forms = forms;
     this.render();
@@ -17,7 +19,6 @@ class SingleCardComponent extends Component {
 
   render() {
     this.element.innerHTML = `
-    <img class="pokemon_poster" src= ${this.pokeApi} alt="${this.name} image"/>
     <h4 class="poke__name">${this.name}</h4>
     <p class="poke__info">${this.abilities} ${this.forms}</p>`;
   }
