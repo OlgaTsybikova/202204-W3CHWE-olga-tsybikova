@@ -14,25 +14,24 @@ class AppComponent extends Component {
     this.element.innerHTML = `
     <header class="main-header">
         <h1 class="main-title">My Pokemons</h1>
-      </header>
-      <section class="controls">                
-      </section>
-      <main class="main">
-        <ul class="pokemons">                        
-        </ul>
-        <div class= "container"></div>
+      </header>  
+        <div class="container">
+        <div class="pokemons"> 
+        </div>                    
+        </div>
       </main>
     `;
     const navBarHeader = this.element.querySelector(".main-header");
     new NavBarComponent(navBarHeader, "Menu");
 
-    const pokemonCard = this.element.querySelector(".main");
+    const pokemonCard = this.element.querySelector(".container");
     new SingleCardComponent(
       pokemonCard,
-      "https://pokeapi.co/api/v2/pokemon/ditto",
-      "Pikachu",
-      "fire",
-      "Yellow bear"
+      "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0",
+      "name",
+      "abilities",
+      "",
+      "id"
     );
   }
 }
