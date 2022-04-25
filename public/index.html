@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
       rel="stylesheet"
@@ -14,10 +14,22 @@
     <title>My Pokemons</title>
   </head>
   <body>
-    <div class="container" id="container"></div>
+    <header class="header">
+      <nav class="header__nav">
+        <h1 class="main__title">
+          <img
+            class="main__logo"
+            src="images/pokemon-logo-black-transparent.png"
+            alt="Pokemon Logo"
+            onclick="location.href='index.html'"
+          /><img />
+        </h1>
+      </nav>
+    </header>
     <div class="pagination">
       <button class="buttonPrevious">Back</button>
       <button class="buttonNext">Next</button>
     </div>
+    <div class="container" id="container"></div>
   </body>
 </html>
